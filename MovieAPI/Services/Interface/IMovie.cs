@@ -1,6 +1,11 @@
-﻿namespace MovieAPI.Services.Interface
+﻿using MovieAPI.Entity;
+using MovieAPI.ResponseObject;
+namespace MovieAPI.Services.Interface
 {
-    public class IMovie
+    public interface IMovie
     {
+        Task<MovieDetails> GetMovieWithDetails(int MovieId);
+        Task<List<Movie>> GetMoviesByActor(int id);
+        Task<List<Movie>> GetMoviesByGenre(int id);
     }
 }

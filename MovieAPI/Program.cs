@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
 using MovieAPI.Context;
+using MovieAPI.Services;
+using MovieAPI.Services.Interface;
 
 namespace MovieAPI
 {
@@ -12,6 +14,7 @@ namespace MovieAPI
 
             // Add services to the container.
             builder.Services.AddDbContext<MovieDbContext>(db => db.UseSqlServer(builder.Configuration.GetConnectionString("MovieConnectionString")), ServiceLifetime.Singleton);
+            builder.Services.AddTransient<IMovie, MovieService>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
